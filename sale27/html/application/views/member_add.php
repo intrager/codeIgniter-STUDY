@@ -1,22 +1,18 @@
         <br>
         <div class="alert mycolor1" role="alert">사용자</div>
 
-        <form name="form1" method="post" action="" class="form-inline">
+        <form name="form1" method="post" action="">
         <table class="table table-bordered table-sm mymargin5">
-        <tr>
-            <td width="20%" class="mycolor2" style="vertical-align:middle"> 번호</td>
-            <td width="80%" align="left">1</td>
-        </tr>
+
         <tr>
             <td width="20%" class="mycolor2" style="vertical-align:middle">
                 <font color="red">*</font> 이름
             </td>
             <td width="80%" align="left">
                 <div class="form-inline">
-                    <input type="text" name="name" class="form-control form-control-sm" size="20" maxlength="20" value="<?=set_value("name"); ?>">
-					<? if (form_error("name")==true) echo form_error("name"); ?>
-
+                    <input type="text" name="name" value="<?=set_value("name"); ?>" class="form-control form-control-sm" size="20" maxlength="20" />
                 </div>
+				<? if (form_error("name")==true) echo form_error("name"); ?>
             </td>
         </tr>
          <tr>
@@ -25,9 +21,9 @@
             </td>
             <td width="80%" align="left">
                 <div class="form-inline">
-                    <input  type="text" name="uid" class="form-control form-control-sm" size="20" maxlength="20" value="<?=set_value("uid"); ?>">
-					<? if (form_error("uid")==true) echo form_error("uid"); ?>
+                    <input type="text" name="uid" value="<?=set_value("uid"); ?>" class="form-control form-control-sm" size="20" maxlength="20" />
                 </div>
+				<? if (form_error("uid")==true) echo form_error("uid"); ?>
             </td>
         </tr>
         <tr>
@@ -36,9 +32,9 @@
             </td>
             <td width="80%" align="left">
                 <div class="form-inline">
-                    <input  type="text" name="pwd" class="form-control form-control-sm" size="20" maxlength="20" value="<?=set_value("pwd"); ?>">
-                <? if (form_error("pwd")==true) echo form_error("pwd"); ?>
+                    <input type="text" name="pwd" value="<?=set_value("pwd"); ?>" class="form-control form-control-sm" size="20" maxlength="20" />
 				</div>
+				<? if (form_error("pwd")==true) echo form_error("pwd"); ?>
             </td>
         </tr>
         <tr>
@@ -69,9 +65,9 @@
         </tr>
         </table>
         
-        </form>
 
 		<div align="center">
-            <input type="submit" value="저장" class="btn btn-sm mycolor1"> &nbsp;
-            <input type="button" value="이전화면으로" class="btn btn-sm mycolor1" onClick="history.back();">
+            <input type="submit" value="저장" class="btn btn-sm mycolor1" /> &nbsp;
+            <input type="button" value="이전화면으로" class="btn btn-sm mycolor1" onClick="history.back();" />
         </div>
+        </form>

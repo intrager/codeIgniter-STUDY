@@ -6,7 +6,7 @@
     $tel = $tel1 . "-" . $tel2 . "-" . $tel3;
     $rank = $row->rank27==0 ? '직원' : '관리자';
 
-	$tmp = $text1 ? "/no/$no/text1/$text1" : "/no/$no";
+	$tmp = $text1 ? "/no/$no/text1/$text1/page/$page" : "/no/$no/page/$page";
 ?>
 	<br>
         <div class="alert mycolor1" role="alert">사용자</div>
