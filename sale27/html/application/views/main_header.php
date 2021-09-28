@@ -45,7 +45,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/~sale27/gubun">구분</a>
-                        <a class="dropdown-item" href="#">제품</a>
+                        <a class="dropdown-item" href="/~sale27/product">제품</a>
                         <div class="dropdown-driver"></div>
                         <a class="dropdown-item" href="/~sale27/member">사용자</a>
                     </div>
