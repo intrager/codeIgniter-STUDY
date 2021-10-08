@@ -1,5 +1,5 @@
 		<br>
-        <div class="alert mycolor1" role="alert">사용자</div>
+        <div class="alert mycolor1" role="alert">구분</div>
 <script>
     function find_text()
 	{

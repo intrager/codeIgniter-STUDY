@@ -5,10 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>판매관리</title>
     <link   href="/~sale27/my/css/bootstrap.min.css" rel="stylesheet">
-    <link  href="/~sale27/my/css/my.css" rel="stylesheet">
     <script src="/~sale27/my/js/jquery-3.5.1.min.js"></script>
     <script src="/~sale27/my/js/popper.min.js"></script>
     <script src="/~sale27/my/js/bootstrap.min.js"></script>
+
+	<link  href="/~sale27/my/css/my.css" rel="stylesheet">
+
+    <script src="/~sale27/my/js/moment-with-locales.min.js"></script>
+    <script src="/~sale27/my/js/bootstrap-datetimepicker.js"></script>
+	<link  href="/~sale27/my/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+	<link  href="/~sale27/my/css/fontawesome-all.min.css" rel="stylesheet">
+
 </head>
 <body>
     <div class="container">
@@ -21,13 +29,13 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
-                     <a class="nav-link" href="#">매입</a>
+                     <a class="nav-link" href="/~sale27/jangbui">매입</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#">매출</a>
+                     <a class="nav-link" href="/~sale27/jangbuo">매출</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#">기간조회</a>
+                     <a class="nav-link" href="/~sale27/gigan">기간조회</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 

@@ -8,7 +8,6 @@
 			$this->load->helper(array("url","date"));	// helper 선언
 			$this->load->library("pagination");			// pagination 선언
 			$this->load->library('upload');				// 사진 업로드 선언
-
         }
 
         public function index()                            // 제일 먼저 실행되는 함수
