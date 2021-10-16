@@ -4,9 +4,9 @@
     function find_text()
 	{
 		if (!form1.text1.value)					// 값이 없는 경우, 전체 자료
-			form1.action="/~sale27/findproduct/lists";
+			form1.action="/~sale27/findproduct/lists/page";
 		else                                    // 값이 있는 경우, text1 값 전달
-			form1.action="/~sale27/findproduct/lists/text1/" + form1.text1.value;
+			form1.action="/~sale27/findproduct/lists/text1/" + form1.text1.value + "/page";
 		form1.submit();
 	}
 

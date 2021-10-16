@@ -29,6 +29,7 @@
 ?>
                 <div class="col-9" align="right">           
                      <a href="/~sale27/product/add<?=$tmp; ?>" class="btn btn-sm mycolor1">추가</a>
+                     <a href="/~sale27/product/jaego<?=$tmp; ?>" class="btn btn-sm mycolor1">재고계산</a>
                 </div>
             </div>
         </form>

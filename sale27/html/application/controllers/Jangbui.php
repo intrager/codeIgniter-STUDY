@@ -128,6 +128,7 @@
 			if ( $this->form_validation->run()==FALSE )     // 수정버튼 클릭한 경우
 			{
 				$data["list"] = $this->jangbui_m->getlist_product();
+
 				$this->load->view("main_header");
 				$data["row"]=$this->jangbui_m->getrow($no);
 				$this->load->view("jangbui_edit",$data);

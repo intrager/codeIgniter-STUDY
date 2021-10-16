@@ -69,7 +69,7 @@
 					<input type="text" name="product_name" value="" 
 						class="form-control form-control-sm" disabled>
 					<input type="button" value="제품찾기" onClick="find_product();" 
-						class="form-control form-control-sm mycolor1">
+						class="form-control btn btn-sm mycolor1">
                 </div>
 				<? if (form_error("product_no")==true) echo form_error("product_no"); ?>
             </td>

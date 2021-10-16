@@ -57,5 +57,31 @@
 			$sql="select * from gubun order by name27";
 			return $this->db->query($sql)->result();
 		}
+
+		function cal_jaego()
+		{
+			$sql="drop table if exists temp;";
+			$this->db->query($sql);
+
+			$sql="create table temp (
+				no27 int not null auto_increment,
+				product_no27 int,
+				jaego27 int default 0,
+				primary key(no27) );";
+			$this->db->query($sql);
+
+			$sql="update product set jaego27=0;";
+			$this->db->query($sql);
+
+			$sql="insert into temp (product_no27, jaego27)
+					select product_no27, sum(numi27)-sum(numo27)
+					from jangbu
+					group by product_no27;";
+			$this->db->query($sql);
+
+			$sql="update product inner join temp on product.no27=temp.product_no27
+					set product.jaego27=temp.jaego27;";
+			$this->db->query($sql);
+		}
     }
 ?>

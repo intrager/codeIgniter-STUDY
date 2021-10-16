@@ -11,6 +11,8 @@
 
         public function index()                            // 제일 먼저 실행되는 함수
         {
+			if($this->session->userdata("rank")!=1) redirect("/");
+
             $this->lists();                                        // list 함수 호출
         }
 

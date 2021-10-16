@@ -8,6 +8,7 @@
 			$this->load->helper(array("url","date"));	// helper 선언
 			$this->load->library("pagination");			// pagination 선언
 			$this->load->library('upload');				// 사진 업로드 선언
+			$this->load->library('image_lib');
         }
 
         public function index()                            // 제일 먼저 실행되는 함수
@@ -88,7 +89,6 @@
 			$this->form_validation->set_rules("name","이름","required|max_length[50]");
 			$this->form_validation->set_rules("price","단가","required|numeric");
 
-
 			if ($this->form_validation->run()==FALSE)
 			{ 
 				$data["list"] = $this->product_m->getlist_gubun();
@@ -152,15 +152,48 @@
 
 		public function call_upload()
 		{
-			$config['upload_path']	= './product_img';		// 저장할 경로
-			$config['allowed_types']	= 'gif|jpg|png';	// 저장할 파일 종류
-			$config['overwrite']	= TRUE;					// overwrite 허용
+			$config['upload_path'] = './product_img';		// 저장할 경로
+			$config['allowed_types'] = 'gif|jpg|png';	// 저장할 파일 종류
+			$config['overwrite'] = TRUE;					// overwrite 허용
+			$config['max_size'] = 10000000;					// 이미지 최대 파일 크기
+			$config['max_width'] = 10000;					// 이미지 최대 가로 길이
+			$config['max_height'] = 10000;					// 이미지 최대 세로 길이
 			$this->upload->initialize($config);				// 설정 적용
+
 			if (!$this->upload->do_upload('pic'))			// 업로드 시작
 				$picname="";								// 실패할 경우 빈 문자열 리턴
-			else
+			else 
+			{
 				$picname=$this->upload->data("file_name");	// 성공할 경우 파일 이름 리턴
+			
+				// 썸네일 환경 설정
+				$config['image_library'] = 'gd2';	// gd2 라이브러리 이용 선언
+				$config['source_image'] = './product_img/' . $picname;	// 원본 사진 이름
+				$config['thumb_marker'] = "";
+				$config['new_image'] = './product_img/thumb';	// thumb 저장 폴더
+				$config['create_thumb'] = TRUE;
+				$config['maintain_ratio'] = TRUE;		// 가로세로 비율 유지
+				$config['width'] = 200;					// thumb 사진 가로길이
+				$config['height'] = 150;				// thumb 사진 세로길이
+				$this->image_lib->initialize($config);	// 설정 적용
+
+				$this->image_lib->resize();	// thumb 사진 생성
+			}
+			
 			return $picname;
+		}
+
+		public function jaego()
+		{
+			$uri_array=$this->uri->uri_to_assoc(3);
+			$text1 = array_key_exists("text1",$uri_array) ? "/text1/" . urldecode($uri_array["text1"]) : "" ;
+			$page = array_key_exists("page",$uri_array) ? "/page/" . urldecode($uri_array["page"]) : 0 ;
+
+			$data["text1"]=$text1;                      // text1 값 전달을 위한 처리
+			$data["page"]=$page;
+			$this->product_m->cal_jaego();
+
+			redirect("/~sale27/product/lists" . $text1 . $page);
 		}
 	}
 ?>

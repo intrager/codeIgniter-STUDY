@@ -9,6 +9,31 @@
 					defaultDate: moment()
 				});
 			});
+
+			function select_product()
+			{
+				var str;
+				str = form1.sel_product_no.value;
+				if(str=="")
+				{
+					form1.product_no.value = "";
+					form1.price.value = "";
+					form1.prices.value = "";
+				}
+				else
+				{
+					str = str.split("^^");
+					form1.product_no.value = str[0];
+					form1.price.value = str[1];
+					form1.prices.value = Number(form1.price.value) * Number(form1.numi.value);
+				}
+			}
+
+			function cal_prices()
+			{
+				form1.prices.value = Number(form1.price.value) * Number(form1.numi.value);
+				form1.bigo.focus();
+			}
 		</script>
 
         <form name="form1" method="post" action="" enctype="multipart/form-data" class="form-inline">
@@ -68,7 +93,7 @@
             <td width="20%" class="mycolor2" style="vertical-align:middle">수량 </td>
             <td width="80%" align="left">
                 <div class="form-inline">
-                    <input type="text" name="numi" value="<?=$row->numi27; ?>" 
+                    <input type="text" name="numi" size="20" maxlength="20" value="<?=$row->numi27; ?>" 
 						class="form-control form-control-sm" onChange='cal_prices();'>
                 </div>
             </td>
@@ -77,7 +102,7 @@
             <td width="20%" class="mycolor2" style="vertical-align:middle">금액</td>
             <td width="80%" align="left">
                 <div class="form-inline">
-                    <input type="text" name="prices" value="<?=$row->prices27; ?>" 
+                    <input type="text" name="prices" size="20" maxlength="20" value="<?=$row->prices27; ?>" 
 						class="form-control form-control-sm" readonly style="border:0">
                 </div>
             </td>
