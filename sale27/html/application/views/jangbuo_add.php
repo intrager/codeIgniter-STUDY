@@ -10,25 +10,6 @@
 			});
 		});
 
-		function select_product()
-		{
-			var str;
-			str = form1.sel_product_no.value;
-			if(str=="")
-			{
-				form1.product_no.value = "";
-				form1.price.value = "";
-				form1.prices.value = "";
-			}
-			else
-			{
-				str = str.split("^^");
-				form1.product_no.value = str[0];
-				form1.price.value = str[1];
-				form1.prices.value = Number(form1.price.value) * Number(form1.numo.value);
-			}
-		}
-
 		function cal_prices()
 		{
 			form1.prices.value = Number(form1.price.value) * Number(form1.numo.value);

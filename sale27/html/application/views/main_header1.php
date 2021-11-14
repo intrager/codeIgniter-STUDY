@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>판매관리</title>
+<title>음원관리</title>
     <link href="/~sale27/my/css/bootstrap.min.css" rel="stylesheet">
     <script src="/~sale27/my/js/jquery-3.5.1.min.js"></script>
     <script src="/~sale27/my/js/popper.min.js"></script>
@@ -22,55 +22,40 @@
     <div class="container">
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/~sale27">판매관리</a>
+            <a class="navbar-brand" href="/~sale27/main1">음원관리</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
-                     <a class="nav-link" href="/~sale27/jangbui">매입</a>
+                     <a class="nav-link" href="/~sale27/music">음원</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="/~sale27/jangbuo">매출</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="/~sale27/gigan">기간조회</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                         통계
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/~sale27/best">Best제품</a>
-                        <a class="dropdown-item" href="/~sale27/crosstab">월별 제품별 현황</a>
-                        <a class="dropdown-item" href="/~sale27/graph">구분별 분포도</a>
-                    </div>
+                     <a class="nav-link" href="/~sale27/record">음반</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  
-                         기초정보
+                         가수
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/~sale27/gubun">구분</a>
-                        <a class="dropdown-item" href="/~sale27/product">제품</a>
-<?
-	if ($this->session->userdata("rank")==1)
-		echo("<div class='dropdown-divider'></div>
-			<a class='dropdown-item' href='/~sale27/member'>사용자</a>");
-?>
-         
+                        <a class="dropdown-item" href="/~sale27/singer">가수목록</a>         
                     </div>
                   </li>
-				  <li class="nav-item"><a class="nav-link" href="/~sale27/picture">사진</a></li>
-				  <li class="nav-item"><a class="nav-link" href="/~sale27/ajax">Ajax</a></li>
-				  <li class="nav-item"><a class="nav-link" href="/~sale27/main1">개별프로젝트</a></li>
+				  <li class="nav-item">
+<?
+	if ($this->session->userdata("rank")==1)
+		echo("<a class='nav-link' href='/~sale27/member1'>사용자</a>");
+	else if ($this->session->userdata("rank")==0 && $this->session->userdata("uid"))
+		echo("<a class='nav-link' href='/~sale27/login1/myPage'>마이페이지</a>");
+?>
+				  </li>	
                 </ul>
 <?
 	if (!$this->session->userdata("uid"))
 		echo("<a href='#exampleModal' data-toggle='modal' class='btn btn-sm btn-outline-secondary btn-dark'>로그인</a>");
 	else 
-		echo("<a href='/~sale27/login/logout' class='btn btn-sm btn-outline-secondary btn-dark'>로그아웃</a>");
+		echo("<a href='/~sale27/login1/logout' class='btn btn-sm btn-outline-secondary btn-dark'>로그아웃</a>");
 ?>
             </div>
         </nav>
@@ -84,7 +69,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			  </div>
 			  <div class="modal-body bg-light" style="text-align:center">
-				<form name="form_login" method="post" action="/~sale27/login/check">
+				<form name="form_login" method="post" action="/~sale27/login1/check">
 				  <div class="form-inline">
 				  	아이디 : &nbsp;&nbsp;
 					<input type="text" name="uid" size="15" value="" class="form-control form-control-sm">
@@ -112,13 +97,13 @@
 		  </ol>
 		  <div class="carousel-inner">
 			<div class="carousel-item active">
-			  <img src="/~sale27/my/img/main1.jpg" height="150" alt="First slide" class="d-block w-100">
+			  <img src="/~sale27/my/img/platform1.jpg" height="150" alt="First slide" class="d-block w-100">
 			</div>
 			<div class="carousel-item">
-			  <img src="/~sale27/my/img/main2.jpg" height="150" alt="Second slide" class="d-block w-100" >
+			  <img src="/~sale27/my/img/platform2.jpg" height="150" alt="Second slide" class="d-block w-100" >
 			</div>
 			<div class="carousel-item">
-			  <img src="/~sale27/my/img/main3.jpg" height="150" alt="Third slide" class="d-block w-100" >
+			  <img src="/~sale27/my/img/platform3.jpg" height="150" alt="Third slide" class="d-block w-100" >
 			</div>
 		  </div>
 		  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

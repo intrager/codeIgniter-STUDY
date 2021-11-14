@@ -9,7 +9,7 @@
 					order by product.name27 limit $start,$limit";   // 전체 자료
 			else
 				$sql="select product.*, gubun.name27 as gubun_name 
-					from product left join gubun on product.gubun_no27=gubun.no27
+					from product left join gubun on product.gubun_no27=gubun.no27 
 					where product.name27 like '%$text1%'
 					order by product.name27 limit $start,$limit";
  
@@ -26,7 +26,7 @@
 			return $this->db->query($sql)->num_rows();
 		}
 
-		function getrow($no) 
+		function getrow($no)
 		{
 			$sql="select product.*, gubun.name27 as gubun_name
 				from product left join gubun on product.gubun_no27=gubun.no27 

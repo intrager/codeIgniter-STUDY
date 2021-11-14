@@ -16,6 +16,9 @@
 	}
 
 	$(function() {
+		/**
+			add (click)
+		*/
 		$("#ajax_add").click(function() {		// 저장버튼 클릭 시 호출
 			var name=$("#name").val();			// name 입력란에 입력한 값
 			$.ajax({							// ajax 함수 호출
@@ -40,6 +43,38 @@
 			$("#collapseExample").collapse('hide');
 		});
 
+		/**
+			add (enter)
+		*/
+		$("#name").keyup(function(event) {	// 저장버튼 클릭 시 호출
+			if(event.keyCode == 13) {	
+			var name=$("#name").val();			// name 입력란에 입력한 값
+				$.ajax({							// ajax 함수 호출
+					url:"/~sale27/ajax/ajax_insert",		// Ajax.php의 ajax_insert 함수 호출 // 실행할 문서
+					type:"POST",					// 값 전송방식
+					data:{							// 전송할 값들
+						"name":name
+					},
+					dataType:"text",				// return 결과값의 데이터형식
+					complete:function(xhr, textStatus) {	// 처리 완료 후
+						var no = xhr.responseText;	// ajax_insert에서 return 된 no값	// 처리 후, return 값
+
+						$("#table_list").append(	// 테이블(table_list)에 추가
+							"<tr id='rowno" + no + "'>" +
+							"	<td>" + no + "</td>" +
+							"	<td><a href='#collapseExampleEdit' data-toggle='collapse' class='ajax_edit' aria-expanded='false' aria-controls='collapseExampleEdit' data-no='" + no + "' data-name='" + name + "'>" + name + "</a></td>" +
+							"	<td><a href='#' rowno='" + no + "' class='ajax_del btn btn-sm mycolor1'>삭제 </a></td>" +
+							"</tr>");
+						//$("#name").val('');			// name 입력란 초기화
+					}
+				});
+				$("#collapseExample").collapse('hide');
+			}
+		});
+
+		/**
+			edit (click)
+		*/
 		$("#ajax_edit").click(function() {
 			var no = $("#edit_no").val();
 			var name = $("#edit_name").val();
@@ -63,6 +98,37 @@
 			$('#collapseExampleEdit').collapse('hide');
 		});
 
+		/**
+			edit (enter)
+		*/
+		$("#edit_name").keyup(function(evnet) {
+			if(event.keyCode == 13) {
+			var no = $("#edit_no").val();
+			var name = $("#edit_name").val();
+				$.ajax({
+					url:"/~sale27/ajax/ajax_update",
+					type: "POST",
+					data: {
+						"no":no,
+						"name":name
+					},
+					dataType: "html",
+					complete: function(xhr, textStatus) {
+						$('#rowno' + no).replaceWith(
+							"<tr id='rowno" + no + "'>" + 
+							"	<td>" + no + "</td>" + 
+							"	<td> <a href='#collapseExampleEdit' data-toggle='collapse' class='ajax_edit' aria-expanded='false' aria-controls='collapseExampleEdit' data-no='" + no + "' data-name='" + name + "'>" + name + "</a></td>" + 
+							"	<td><a href='#' rowno='" + no + "' class='ajax_del btn btn-sm mycolor1'>삭제</a></td>" +
+							"</tr>");
+					}
+				});
+				$('#collapseExampleEdit').collapse('hide');
+			}
+		});
+
+		/**
+			delete (click)
+		*/
 		$("#table_list").on("click",".ajax_del",function() {
 			if(confirm("삭제할까요?")) {
 				no = $(this).attr("rowno");
@@ -79,7 +145,7 @@
 				});
 			}
 		});
-	});
+	});	
 
 	$(document).on('click', '.ajax_add', function() {
 		$("#collapseExampleEdit").collapse('hide');
@@ -145,7 +211,7 @@
 					<input type="text" name="none" value="" disabled class="form-control form-control-sm" id="none">
 				</td>
 				<td width="80%">
-					<input type="text" name="name" value="" class="form-control form-control-sm" id="name">
+					<input type="text" name="name" value="" class="form-control form-control-sm" id="name" >
 				</td>
 				<td width="10%" style="vertical-align:middle">
 					<input type="button" id="ajax_add" value="저장" class="btn btn-sm btn-primary">
@@ -165,10 +231,10 @@
 					<input type="text" name="no" value="" disabled class="form-control form-control-sm" id="edit_no">
 				</td>
 				<td width="80%">
-					<input type="text" name="name" value="" class="form-control form-control-sm" id="edit_name">
+					<input type="text" name="name" value="" class="form-control form-control-sm" id="edit_name" >
 				</td>
 				<td width="10%" style="vertical-align:middle">
-					<input type="button" id="ajax_edit" value="수정" class="btn btn-sm btn-primary">
+					<input type="button" id="ajax_edit" value="수정" class="btn btn-sm btn-primary" >
 				</td>
 			</tr>
 			</form>

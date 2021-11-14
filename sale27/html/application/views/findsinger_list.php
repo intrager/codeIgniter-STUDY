@@ -1,23 +1,29 @@
 		<br>
-        <div class="alert mycolor1" role="alert">제품선택</div>
+        <div class="alert mycolor1" role="alert">가수 선택</div>
 <script>
     function find_text()
 	{
 		if (!form1.text1.value)					// 값이 없는 경우, 전체 자료
-			form1.action="/~sale27/findproduct/lists/page";
+			form1.action="/~sale27/findsinger/lists/page";
 		else                                    // 값이 있는 경우, text1 값 전달
-			form1.action="/~sale27/findproduct/lists/text1/" + form1.text1.value + "/page";
+			form1.action="/~sale27/findsinger/lists/text1/" + form1.text1.value + "/page";
 		form1.submit();
 	}
 
-	function SendProduct(no, name, price)
+	function SendSinger(no, name)
 	{
-		opener.form1.product_no.value = no;						// 1
-		opener.form1.product_name.value = name;					// 2
-		opener.form1.price.value = price;                       // 3
-		opener.form1.prices.value = Number(price) * Number(opener.form1.numo.value);
+		opener.form1.singer_no.value = no;						// 1
+		opener.form1.singer_name.value = name;					// 2
 		self.close();
 	}
+
+	function zoomimage(iname, pname)
+	{
+		w=window.open("/~sale27/singer/zoom/iname/" + iname + "/pname/" + pname,
+			"imageview", "resizable=yes, scrollbars=yes, status=no, width=600, height=550");
+		w.focus();
+	}
+
 
 </script>
 
@@ -39,29 +45,23 @@
             </div>
         </form>
 
-        <table class="table  table-bordered  table-sm  mymargin5">
+        <table class="table table-bordered table-sm mymargin5">
             <tr class="mycolor2">
                 <td width="10%">번호</td>
-                <td width="20%">구분명</td>
-				<td width="30%">제품명</td>
-                <td width="20%">단가</td>
-				<td width="20%">재고</td>
-            </tr>
+                <td width="25%">가수이름</td>
+				<td width="10%">선택하기</td>
+			</tr>
 <?
     foreach ($list as $row)                             // 연관배열 list를 row를 통해 출력한다.
     {
-        $no=$row->no27;                                 // 사용자번호
+		$iname=$row->pic27 ? $row->pic27 : "";                       
+		$pname=$row->name27;
+        $no=$row->no27;                                 // 번호
 ?>
 			<tr>
-				<td><?=$no; ?></td>
-				<td><?=$row->gubun_name; ?></td>
-				<td align="left">
-					<a href="javascript:SendProduct(<?=$row->no27; ?>,'<?=$row->name27; ?>',<?=$row->price27; ?>);">
-						<?=$row->name27; ?>
-					</a>
-				</td>
-				<td align="right"><?=number_format($row->price27); ?></td>
-				<td align="right"><?=number_format($row->jaego27); ?></td>
+				<td><?=$no; ?></td> 
+				<td><a href="javascript:zoomimage('<?=$iname; ?>', '<?=$pname; ?>');"><?=$row->name27; ?></a></td>
+				<td><a href="javascript:SendSinger(<?=$row->no27; ?>,'<?=$row->name27; ?>');">선택</a></td>
 			</tr>
 <?
     }

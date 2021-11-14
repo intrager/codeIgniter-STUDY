@@ -37,7 +37,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text">날짜</span>
 							</div>
-							<input type="text" name="text1" class="form-control" value="<?=$text1; ?>" onKeydown="if (event.keyCode == 13) { find_text(); }">
+							<input type="text" name="text1" class="form-control" value="<?=$text1; ?>" onKeydown="if (event.keyCode == 13) { find_text(); }" size="9">
 							<div class="input-group-append">
 								<div class="input-group-text">
 									<div class="input-group-addon">
