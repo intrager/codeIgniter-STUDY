@@ -27,7 +27,7 @@
             <td width="20%" class="mycolor2" style="vertical-align:middle"> 추가정보 </td>
             <td width="80%" align="left">
                 <div class="form-inline">
-                    <input type="text" name="tmi" value="" class="form-control form-control-sm" />
+                    <textarea type="text" name="tmi" value="" class="form-control form-control-sm" ></textarea>
                 </div>
             </td>
         </tr>

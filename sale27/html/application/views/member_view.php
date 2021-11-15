@@ -59,8 +59,8 @@
         </tr>
         </table>
         <div align="center">
-            <a href="/~sale27/member1/edit<?=$tmp; ?>" class="btn btn-sm mycolor1">수정</a>
-            <a href="/~sale27/member1/del<?=$tmp; ?>" class="btn btn-sm mycolor1" onClick="return confirm('삭제할까요?');">삭제</a> &nbsp;
+            <a href="/~sale27/member/edit<?=$tmp; ?>" class="btn btn-sm mycolor1">수정</a>
+            <a href="/~sale27/member/del<?=$tmp; ?>" class="btn btn-sm mycolor1" onClick="return confirm('삭제할까요?');">삭제</a> &nbsp;
             <input type="button" value="이전화면으로" class="btn btn-sm mycolor1" onClick="history.back();">
         </div>
         </form>

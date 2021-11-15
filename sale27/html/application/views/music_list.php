@@ -103,7 +103,7 @@
 ?>
 			<tr id="rowno<?=$no; ?>">
 				<td><?=$no; ?></td>
-				<td align="center" bgcolor="skyblue"><a href="/~sale27/music/view/no/<?=$no; ?><?=$tmp; ?>"><?=$row->name27; ?></a></td>
+				<td align="center" bgcolor="antiquewhite"><a href="/~sale27/music/view/no/<?=$no; ?><?=$tmp; ?>"><?=$row->name27; ?></a></td>
 				<td align="center" bgcolor="lightyellow"><?=$row->record_name; ?></td>
 				<td align="center" bgcolor="lightyellow"><?=$row->singer_name; ?></td>
 				<td align="center"><?=$row->record_release; ?></td>

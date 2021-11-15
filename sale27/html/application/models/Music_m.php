@@ -4,7 +4,7 @@
     {
         public function getlist($text1,$text2,$text3,$start,$limit)
         {    
-			if ($text3=="0")
+			if ($text3=="")
 				$sql="select music.*, record.name27 as record_name, singer.name27 as singer_name, record.release27 as record_release
 					from (music left join record on music.record_no27=record.no27) left join singer on record.singer_no27 = singer.no27 
 					where record.release27 between '$text1' and '$text2'
@@ -20,7 +20,7 @@
 
 		public function rowcount($text1, $text2, $text3)
 		{
-			if ($text3=="0")
+			if ($text3=="")
 				$sql="select music.*, record.name27 as record_name, singer.name27 as singer_name, record.release27 as record_release from (music left join record on music.record_no27=record.no27) left join singer on record.singer_no27=singer.no27 where record.release27 between '$text1' and '$text2'";
 			else
 				$sql="select music.*, record.name27 as record_name, singer.name27 as singer_name, record.release27 as record_release from (music left join record on music.record_no27=record.no27) left join singer on record.singer_no27=singer.no27 where (record.release27 between '$text1' and '$text2') and music.name27 like '%$text3%'";

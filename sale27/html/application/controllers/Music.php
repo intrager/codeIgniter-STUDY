@@ -70,26 +70,28 @@
 			$data["row"]=$this->music_m->getrow($no);			
 			
 			$this->load->view("main_header1");                    // 상단출력(메뉴)
-            $this->load->view("music_view",$data);           // record_list에 자료전달
+            $this->load->view("music_view",$data);           // music_view에 자료전달
             $this->load->view("main_footer1"); 
 		}
 		
 		public function del()
 		{
 			$uri_array=$this->uri->uri_to_assoc(3);
-			$no=array_key_exists("no",$uri_array) ? $uri_array["no"] : "" ;		// URI: /~sale27/record/del/no/1
-			$text1=array_key_exists("text1",$uri_array) ? "/text1/" . urldecode($uri_array["text1"]) : "";
+			$no=array_key_exists("no",$uri_array) ? $uri_array["no"] : "" ;		// URI: /~sale27/music/del/no/1
+			$text1 = array_key_exists("text1",$uri_array) ? "/text1/" . urldecode($uri_array["text1"]) : "";
+			$text2 = array_key_exists("text2",$uri_array) ? "/text2/" . urldecode($uri_array["text2"]) : "";
 			$page = array_key_exists("page",$uri_array) ? "/page/" . urldecode($uri_array["page"]) : 0 ;
 			
 			$this->music_m->deleterow($no);
 
-			redirect("/~sale27/music/lists". $text1 . $page);             // 목록화면으로 돌아가기
+			redirect("/~sale27/music/lists". $text1 . $text2 . $page);             // 목록화면으로 돌아가기
 		}
 
 		public function add()
 		{
 			$uri_array=$this->uri->uri_to_assoc(3);
 		    $text1 = array_key_exists("text1",$uri_array) ? "/text1/" . urldecode($uri_array["text1"]) : "" ;
+			$text2 = array_key_exists("text2",$uri_array) ? "/text2/" . urldecode($uri_array["text2"]) : "" ;
 			$page = array_key_exists("page",$uri_array) ? "/page/" . urldecode($uri_array["page"]) : 0 ;
 
 			$this->load->library("form_validation");
@@ -114,7 +116,7 @@
 				);
 				$result = $this->music_m->insertrow($data); 
 
-				redirect("/~sale27/music/lists" . $text1 . $page);    //   목록화면으로 이동.
+				redirect("/~sale27/music/lists" . $text1 . $text2 . $page);    //   목록화면으로 이동.
 			}
 		}
 

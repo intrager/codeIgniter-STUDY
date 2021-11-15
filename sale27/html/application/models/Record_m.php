@@ -4,7 +4,7 @@
     {
         public function getlist($text1,$text2,$text3,$start,$limit)
         {    
-			if ($text3=="0")
+			if ($text3=="")
 				$sql="select record.*, singer.name27 as singer_name 
 					from record left join singer on record.singer_no27=singer.no27 
 					where record.release27 between '$text1' and '$text2'
@@ -12,7 +12,7 @@
 			else
 				$sql="select record.*, singer.name27 as singer_name 
 					from record left join singer on record.singer_no27=singer.no27 
-					where record.release27 between '$text1' and '$text2' and record.no27=$text3
+					where record.release27 between '$text1' and '$text2' and record.name27 like '%$text3%'
 					order by record.release27 limit $start,$limit";   // 전체 자료
 
             return $this->db->query($sql)->result();       // 쿼리실행, 결과 리턴
@@ -20,10 +20,10 @@
 
 		public function rowcount($text1, $text2, $text3)
 		{
-			if ($text3=="0")
+			if ($text3=="")
 				$sql="select * from record where record.release27 between '$text1' and '$text2'";
 			else
-				$sql="select * from record where record.release27 between '$text1' and '$text2' and record.name27=$text3";
+				$sql="select * from record where record.release27 between '$text1' and '$text2' and record.name27 like '%$text3%'";
 
 			return $this->db->query($sql)->num_rows();
 		}

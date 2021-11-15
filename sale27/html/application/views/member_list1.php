@@ -13,23 +13,33 @@
 
         <form name="form1" method="post" action="">
             <div class="row">
-                <div class="col-3" align="left">            
+                <div class="col-3" align="left">
                     <div class="input-group input-group-sm">
                         <div class="input-group-prepend">
                             <span class="input-group-text">이름</span>
                         </div>
+<?	if($this->session->userdata("rank") == 1) { ?>	
                         <input type="text" name="text1" class="form-control" value="<?=$text1; ?>" onKeydown="if (event.keyCode == 13) { find_text(); }">
                         <div class="input-group-append">
                             <button class="btn btn-sm mycolor1" type="button" onClick="find_text();">검색</button>
                         </div>
+<?	} else { ?>
+						<input type="text" name="text1" class="form-control" value="<?=$text1; ?>" onKeydown="if (event.keyCode == 13) { find_text(); }" disabled>
+                        <div class="input-group-append">
+                            <button class="btn btn-sm mycolor1" type="button" onClick="find_text();" disabled>검색</button>
+                        </div>
+<?	} ?>
                     </div>
                 </div>
 <?
 	$tmp = $text1 ? "/text1/$text1/page/$page" : "/page/$page";
+
+	if($this->session->userdata("rank") == 1) {
 ?>
                 <div class="col-9" align="right">           
-                     <a href="/~sale27/member1/add<?=$tmp; ?>" class="btn btn-sm mycolor1">추가</a>
+                    <a href="/~sale27/member1/add<?=$tmp; ?>" class="btn btn-sm mycolor1">추가</a>
                 </div>
+<?	} ?>
             </div>
         </form>
 
@@ -63,7 +73,6 @@
 <?
     }
 ?>
-
         </table>
 <?=$pagination; ?>
 

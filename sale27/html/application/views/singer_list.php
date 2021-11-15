@@ -38,7 +38,7 @@
                 <div class="col-3" align="left">            
                     <div class="input-group input-group-sm">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">이름</span>
+                            <span class="input-group-text">가수이름</span>
                         </div>
                         <input type="text" name="text1" class="form-control" value="<?=$text1; ?>" onKeydown="if (event.keyCode == 13) { find_text(); }">
                         <div class="input-group-append">

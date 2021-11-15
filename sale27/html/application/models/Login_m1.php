@@ -3,13 +3,7 @@
     {
         function getrow($uid,$pwd)
 		{
-			$sql="select * from member where uid27='$uid' and pwd27='$pwd'";
-			return $this->db->query($sql)->row();
-		}
-
-		function get_member($uid)
-		{
-			$sql="select * from member where uid27='$uid'";
+			$sql="select * from member1 where uid27='$uid' and pwd27='$pwd'";
 			return $this->db->query($sql)->row();
 		}
     }

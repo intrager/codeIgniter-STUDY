@@ -22,9 +22,12 @@
 			$uri_array=$this->uri->uri_to_assoc(3);
 		    $text1 = array_key_exists("text1",$uri_array) ? urldecode($uri_array["text1"]) : date("Y-m-d", strtotime("-1 month"));
 			$text2 = array_key_exists("text2",$uri_array) ? urldecode($uri_array["text2"]) : date("Y-m-d");
-			$text3 = array_key_exists("text3",$uri_array) ? urldecode($uri_array["text3"]) : "0";
+			$text3 = array_key_exists("text3",$uri_array) ? urldecode($uri_array["text3"]) : "";
 
-		 	$base_url="/record/lists/text1/$text1/text2/$text2/text3/$text3/page";
+		 	if($text3=="")
+		 		$base_url="/record/lists/text1/$text1/text2/$text2/page";
+			else
+		 		$base_url="/record/lists/text1/$text1/text2/$text2/text3/$text3/page";
 			$page_segment = substr_count( substr($base_url,0,strpos($base_url,"page")) , "/" )+1;
 			$base_url = "/~sale27" . $base_url;
 
@@ -55,18 +58,22 @@
 		{
 			$uri_array=$this->uri->uri_to_assoc(3);
 			$no	= array_key_exists("no",$uri_array) ? $uri_array["no"] : "" ;
-			$text1 = array_key_exists("text1",$uri_array) ? urldecode($uri_array["text1"]) : "" ;
+		    $text1 = array_key_exists("text1",$uri_array) ? urldecode($uri_array["text1"]) : date("Y-m-d", strtotime("-1 month"));
+			$text2 = array_key_exists("text2",$uri_array) ? urldecode($uri_array["text2"]) : date("Y-m-d");
+			$text3 = array_key_exists("text3",$uri_array) ? urldecode($uri_array["text3"]) : "";
 			$page = array_key_exists("page",$uri_array) ? urldecode($uri_array["page"]) : 0 ;
 
 			$data["text1"]=$text1;                      // text1 값 전달을 위한 처리
+			$data["text2"]=$text2;  
+			$data["text3"]=$text3;
 			$data["page"]=$page;
 			$data["row"]=$this->record_m->getrow($no);
 			$data["list"]=$this->record_m->getmusic_list($no);
 			
 			
 			$this->load->view("main_header1");                    // 상단출력(메뉴)
-            $this->load->view("record_view",$data);           // record_list에 자료전달
-            $this->load->view("main_footer1"); 
+            $this->load->view("record_view",$data);           // record_view에 자료전달
+            $this->load->view("main_footer1");					// 하단 출력 
 		}
 
 		public function del()
@@ -80,7 +87,8 @@
 		public function add()
 		{
 			$uri_array=$this->uri->uri_to_assoc(3);
-		    $text1 = array_key_exists("text1",$uri_array) ? "/text1/" . urldecode($uri_array["text1"]) : "" ;
+			$text1 = array_key_exists("text1",$uri_array) ? "/text1/" . urldecode($uri_array["text1"]) : "";
+			$text2 = array_key_exists("text2",$uri_array) ? "/text2/" . urldecode($uri_array["text2"]) : "";
 			$page = array_key_exists("page",$uri_array) ? "/page/" . urldecode($uri_array["page"]) : 0 ;
 
 			$this->load->library("form_validation");
@@ -114,7 +122,9 @@
 		{
 			$uri_array=$this->uri->uri_to_assoc(3);
 			$no	= array_key_exists("no",$uri_array) ? $uri_array["no"] : "" ;
-			$text1 = array_key_exists("text1",$uri_array) ? "/text1/" . urldecode($uri_array["text1"]) : "" ;
+			$text1 = array_key_exists("text1",$uri_array) ? "/text1/" . urldecode($uri_array["text1"]) : "";
+			$text2 = array_key_exists("text2",$uri_array) ? "/text2/" . urldecode($uri_array["text2"]) : "";
+			$text3 = array_key_exists("text3",$uri_array) ? "/text3/" . urldecode($uri_array["text3"]) : "";
 			$page = array_key_exists("page",$uri_array) ? "/page/" . urldecode($uri_array["page"]) : 0 ;
 
 			$this->load->library("form_validation");	// 폼검증 라이브러리 로드
@@ -141,7 +151,7 @@
 				if($picname) $data["pic27"] = $picname;	// 파일이름 저장
 
 				$result = $this->record_m->updaterow($data,$no);
-				redirect("/~sale27/record/lists" . $text1 . $page);
+				redirect("/~sale27/record/lists" . $text1 . $text2 . $text3 . $page);
 			}
 		}
 

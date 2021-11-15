@@ -44,10 +44,8 @@
                   </li>
 				  <li class="nav-item">
 <?
-	if ($this->session->userdata("rank")==1)
+	if ($this->session->userdata("uid"))
 		echo("<a class='nav-link' href='/~sale27/member1'>사용자</a>");
-	else if ($this->session->userdata("rank")==0 && $this->session->userdata("uid"))
-		echo("<a class='nav-link' href='/~sale27/login1/myPage'>마이페이지</a>");
 ?>
 				  </li>	
                 </ul>

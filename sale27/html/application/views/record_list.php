@@ -3,7 +3,10 @@
 <script>
     function find_text()
 	{
-		form1.action="/~sale27/record/lists/text1/" + form1.text1.value + "/text2/" + form1.text2.value + "/text3/" + form1.text3.value + "/page";
+		if(!form1.text3.value)
+			form1.action="/~sale27/record/lists/text1/" + form1.text1.value + "/text2/" + form1.text2.value + "/page";
+		else
+			form1.action="/~sale27/record/lists/text1/" + form1.text1.value + "/text2/" + form1.text2.value + "/text3/" + form1.text3.value + "/page";
 		form1.submit();
 	}
 
@@ -56,7 +59,7 @@
                     <div class="form-inline">
 						<div class="input-group input-group-sm table-sm date" id="text1">
 							<div class="input-group-prepend">
-								<span class="input-group-text">날짜</span>
+								<span class="input-group-text">발매 날짜</span>
 							</div>
 							<input type="text" name="text1" class="form-control" value="<?=$text1; ?>" onKeydown="if (event.keyCode == 13) { find_text(); }" size="9">
 							<div class="input-group-append">
@@ -84,23 +87,18 @@
 								<span class="input-group-text">음반이름</span>
 							</div>
 							<div class="input-group-append">
-								<select name="text3" class="form-control form-control-sm" onchange="javascript:find_text();">
-									<option value="0">전체</option>
-<?
-		foreach ($list_record as $row)                             // 연관배열 list_product를 row를 통해 출력한다.
-		{
-			if($row->no27==$text3)
-				echo("<option value='$row->no27' selected>$row->name27</option>");
-			else
-				echo("<option value='$row->no27'>$row->name27</option>");
-		}
-?>
-								</select>
+								<input type="text" name="text3" class="form-control" value="<?=$text3; ?>" onKeydown="if (event.keyCode == 13) { find_text(); }">
+								<div class="input-group-append">
+									<button class="btn btn-sm mycolor1" type="button" onClick="find_text();">검색</button>
+								</div>
 							</div>
 						</div>
 					</div>
 <?
-	$tmp = $text1 ? "/text1/$text1/page/$page" : "/page/$page";
+	$text1 = $text1 ? "/text1/$text1" : "";
+	$text2 = $text2 ? "/text2/$text2" : "";
+	$text3 = $text3 ? "/text3/$text3" : "";
+	$tmp = $text1 . $text2 . $text3 . "/page/$page";
 ?>
                 </div>
 

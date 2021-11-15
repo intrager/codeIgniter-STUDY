@@ -4,7 +4,7 @@
 	$text1 = $text1 ? "/text1/$text1" : "";
 	$text2 = $text2 ? "/text2/$text2" : "";
 	$text3 = $text3 ? "/text3/$text3" : "";
-	$tmp = "/no/$no/". $text1 . $text2 . $text3 . "/page/$page";
+	$tmp = $text1 . $text2 . $text3 . "/page/$page";
 ?>
         <br>
         <div class="alert mycolor1" role="alert"><?=$row->name27; ?></div>
@@ -42,8 +42,8 @@
 			</table>
 
 			<div align="center">
-				<a href="/~sale27/music/edit<?=$tmp; ?>" class="btn btn-sm mycolor1">수정</a>
-				<a href="/~sale27/music/del<?=$tmp; ?>" class="btn btn-sm mycolor1" onClick="return confirm('삭제할까요?');">삭제</a> &nbsp;
-				<input type="button" value="이전화면으로" class="btn btn-sm mycolor1" onClick="history.back();">
+				<a href="/~sale27/music/edit/no/<?=$no; ?><?=$tmp; ?>" class="btn btn-sm mycolor1">수정</a>
+				<a href="/~sale27/music/del/no/<?=$no; ?><?=$tmp; ?>" class="btn btn-sm mycolor1" onClick="return confirm('삭제할까요?');">삭제</a> &nbsp;
+				<a href="/~sale27/music/lists<?=$tmp; ?>" class="btn btn-sm mycolor1">이전 페이지로</a>
 			</div>
         </form>

@@ -1,6 +1,20 @@
         <br>
         <div class="alert mycolor1" role="alert">음반 수정 화면</div>
+<script>
+	$(function() {
+		$('#release').datetimepicker({
+			locale: 'ko',
+			format: 'YYYY-MM-DD',
+			defaultDate: moment()
+		});
+	});
 
+	
+	function find_product()
+	{
+		window.open("/~sale27/findsinger","","resizable=yes,scrollbars=yes,width=500,height=600");
+	}
+</script>
         <form name="form1" method="post" action="" enctype="multipart/form-data" class="form-inline">
         <table class="table table-bordered table-sm mymargin5">
 		<tr>
@@ -9,18 +23,11 @@
             </td>
             <td width="80%" align="left">
                 <div class="form-inline">
-                    <select name="singer_no" class="form-control-form-control-sm">
-						<option value="">선택하세요.</option>
-<?
-	foreach ($list as $row1)
-	{
-		if ($row->singer_no==$row1->no27)
-			echo("<option value='$row1->no27' selected> $row1->name27</option>");
-		else
-			echo("<option value='$row1->no27'> $row1->name27</option>");
-	}
-?>
-					</select>
+                    <input type="hidden" name="singer_no" value="<?=$row->singer_no27; ?>">
+					<input type="text" name="singer_name" value="<?=$row->singer_name; ?>" 
+						class="form-control form-control-sm" disabled>
+					<input type="button" value="가수찾기" onClick="find_product();" 
+						class="form-control btn btn-sm mycolor1">
                 </div>
 				<? if (form_error("singer_no")==true) echo form_error("singer_no"); ?>
             </td>
