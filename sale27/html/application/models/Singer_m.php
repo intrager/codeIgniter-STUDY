@@ -11,6 +11,7 @@
  
             return $this->db->query($sql)->result();       // 쿼리실행, 결과 리턴
         }
+
 		public function rowcount($text1)
 		{
 			if(!$text1)
@@ -31,7 +32,7 @@
 
 		function getrecord_list($no) 
 		{
-			$sql="select record.*, music.name27 as music_name from record left join music on music.record_no27=record.no27 where singer_no27=$no";
+			$sql="select record.*, music.name27 as music_name, music.video27 as music_video from record left join music on music.record_no27=record.no27 where singer_no27=$no";
 			return $this->db->query($sql)->result();
 		}
 

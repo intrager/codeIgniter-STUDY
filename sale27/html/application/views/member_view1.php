@@ -4,7 +4,7 @@
     $tel2 = trim(substr($row->tel27,3,4));
     $tel3 = trim(substr($row->tel27,7,4));
     $tel = $tel1 . "-" . $tel2 . "-" . $tel3;
-    $rank = $row->rank27==0 ? '직원' : '관리자';
+    $rank = $row->rank27==0 ? '사용자' : '관리자';
 
 	$tmp = $text1 ? "/no/$no/text1/$text1/page/$page" : "/no/$no/page/$page";
 ?>

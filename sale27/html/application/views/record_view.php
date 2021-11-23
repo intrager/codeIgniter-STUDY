@@ -6,6 +6,15 @@
 	$text3 = $text3 ? "/text3/$text3" : "";
 	$tmp = $text1 . $text2 . $text3 . "/page/$page";
 ?>
+
+<script>
+	function zoomRecord(recordIname, recordPname)
+	{
+		w=window.open("/~sale27/record/zoom/recordIname/" + recordIname + "/recordPname/" + recordPname,
+			"imageview", "resizable=yes, scrollbars=yes, status=no, width=600, height=550");
+		w.focus();
+	}
+</script>
         <br>
         <div class="alert mycolor1" role="alert"><?=$row->name27; ?></div>
 
@@ -36,12 +45,14 @@
 			 <tr>
 				<td width="20%" class="mycolor2" style="vertical-align:middle"> 사진 </td>
 				<td width="80%" align="left">
-	<?
-		if ($row->pic27)     // 이미지가 있는 경우
-			echo("<img src='/~sale27/record_img/$row->pic27' width='300' class='img-fluid img-thumbnail'>");
-		else                   // 이미지가 없는 경우
-			echo("<img src='' width='300' class='img-fluid img-thumbnail'>");
-	?>
+<?
+		$recordIname=$row->pic27 ? $row->pic27 : "";		// 앨범 사진
+		$recordPname=$row->name27;							// 앨범 이름
+	if ($row->pic27)     // 이미지가 있는 경우
+		echo("<a href='javascript:zoomRecord(\"$recordIname\", \"$recordPname\");'><img src='/~sale27/record_img/$row->pic27' width='300' class='img-fluid img-thumbnail'></a>");
+	else                   // 이미지가 없는 경우
+		echo("<img src='' width='300' class='img-fluid img-thumbnail'>");
+?>
 				</td>
 			</tr>
         </table>

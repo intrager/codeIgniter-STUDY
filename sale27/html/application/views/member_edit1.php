@@ -73,15 +73,15 @@
 <?	if($this->session->userdata("rank") == 1) {
 	
 		if($row->rank27==0) { ?>
-                    <input type="radio" name="rank" value="0" checked> 직원&nbsp;&nbsp;
+                    <input type="radio" name="rank" value="0" checked> 사용자&nbsp;&nbsp;
                     <input type="radio" name="rank" value="1" > 관리자
 <?		} else { ?>
-                    <input type="radio" name="rank" value="0" > 직원&nbsp;&nbsp;
+                    <input type="radio" name="rank" value="0" > 사용자&nbsp;&nbsp;
                     <input type="radio" name="rank" value="1" checked > 관리자
 <?		} 
 	} else { ?>
 					<input type="hidden" name="rank" value="<?=$row->rank27; ?>">
-                    <input type="radio" name="rank" value="0" checked disabled> 직원&nbsp;&nbsp;
+                    <input type="radio" name="rank" value="0" checked disabled> 사용자&nbsp;&nbsp;
                     <input type="radio" name="rank" value="1" disabled> 관리자
 <?	} ?>
 				</div>

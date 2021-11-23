@@ -8,12 +8,12 @@
 				$sql="select music.*, record.name27 as record_name, singer.name27 as singer_name, record.release27 as record_release
 					from (music left join record on music.record_no27=record.no27) left join singer on record.singer_no27 = singer.no27 
 					where record.release27 between '$text1' and '$text2'
-					order by music.no27 limit $start,$limit";   // 전체 자료
+					order by record.release27 desc limit $start,$limit";   // 전체 자료
 			else
 				$sql="select music.*, record.name27 as record_name, singer.name27 as singer_name, record.release27 as record_release
 					from (music left join record on music.record_no27=record.no27) left join singer on record.singer_no27 = singer.no27  
 					where (record.release27 between '$text1' and '$text2') and music.name27 like '%$text3%'
-					order by music.no27 limit $start,$limit";   // 전체 자료
+					order by record.release27 desc limit $start,$limit";   // 전체 자료
 
             return $this->db->query($sql)->result();       // 쿼리실행, 결과 리턴
         }

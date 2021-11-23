@@ -60,7 +60,7 @@
         $tel2 = trim(substr($row->tel27,3,4));			// 전화 : 국번호 추출
         $tel3 = trim(substr($row->tel27,7,4));			// 전화 : 번호 추출
         $tel = $tel1 . "-" . $tel2 . "-" . $tel3;       // 합치기
-        $rank = $row->rank27==0 ? "직원" : "관리자" ;     // 0->직원, 1->관리자 
+        $rank = $row->rank27==0 ? "사용자" : "관리자" ;     // 0->사용자, 1->관리자 
 ?>
 			<tr>
 				<td><?=$no; ?></td>

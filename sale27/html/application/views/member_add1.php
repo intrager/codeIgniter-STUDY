@@ -58,7 +58,7 @@
             </td>
             <td width="80%" align="left">
                 <div class="form-inline">
-                    <input  type="radio" name="rank" value="0" checked> 직원&nbsp;&nbsp;
+                    <input  type="radio" name="rank" value="0" checked> 사용자&nbsp;&nbsp;
                     <input  type="radio" name="rank" value="1"> 관리자
                 </div>
             </td>

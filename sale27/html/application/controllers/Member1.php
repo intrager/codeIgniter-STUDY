@@ -82,7 +82,7 @@
 			
 			$this->member_m1->deleterow($no);
 			
-			if($this->session->unset_userdata('rank')==0) {
+			if($this->session->userdata('rank')==0) {
 				$this->session->unset_userdata('uid');
 				$this->session->unset_userdata('rank');
 				
